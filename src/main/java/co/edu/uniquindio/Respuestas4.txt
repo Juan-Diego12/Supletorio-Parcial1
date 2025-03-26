@@ -1,0 +1,105 @@
+a)¿Qué salida produce el siguiente código?
+public class Test {
+    public static void main(String[] args) {
+List<Integer> lista = new ArrayList<>(Arrays.asList(4, 1, 3, 2));
+Collections.sort(lista, Collections.reverseOrder());
+System.out.println(lista);
+    }
+}
+
+
+Respuesta [4, 3, 2, 1]
+
+
+b)  ¿Qué sucede al ejecutar el siguiente código?
+
+public class Test {
+    public static void main(String[] args) {
+        Map<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "A");
+        treeMap.put(2, "B");
+        treeMap.put(3, "C");
+
+        for (Integer key : treeMap.keySet()) {
+            if (key == 2) {
+                treeMap.put(4, "D"); 
+            }
+        }
+
+        System.out.println(treeMap);
+    }
+}
+
+
+Respuesta  ConcurrentModificationException
+
+c) ¿Qué sucede al ejecutar el siguiente código?
+public class Test {
+   public void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);stack.push(2);
+        stack.push(3);stack.push(4);
+
+        invertirStack(stack);
+        System.out.println( stack);
+    }
+    public static <T extends Number> void invertirStack(Stack<T> stack) {
+        if (!stack.isEmpty()) {
+            T temp = stack.pop();
+            invertirStack(stack);
+            insertarAbajo(stack, temp);
+        }
+    }
+    private static <T extends Number> void insertarAbajo(Stack<T> stack, T valor) {
+        if (stack.isEmpty()) {
+            stack.push(valor);
+        } else {
+            T temp = stack.pop();
+            insertarAbajo(stack, valor);
+            stack.push(temp);
+        }
+    }
+}
+
+
+	Respuesta  No compila debido a una restricción de tipo en la recursión
+
+d) ¿Qué salida produce el siguiente código?
+
+import java.util.*;
+
+public class Test {
+       Deque<Integer> deque = new ArrayDeque<>();
+        deque.add(10);
+        deque.add(20);
+        deque.addFirst(5);
+        deque.addLast(30);
+
+        System.out.print(deque.pollFirst() + " ");
+        System.out.print(deque.pollLast() + " ");
+        System.out.print(deque.peekFirst());
+    }
+}
+Opciones:
+
+Respuesta 5 30 10
+
+
+e) ¿Qué salida produce el siguiente código?
+
+public class Test {
+    public static void main(String[] args) {
+       TreeSet<String> set = new TreeSet<>();
+        set.add("Perro");
+        set.add("Gato");
+        set.add("Lobo");
+        
+        Iterator<String> it = set.descendingIterator();
+        System.out.println(it.next());
+        set.add("Tigre"); 
+        System.out.println(it.next());
+ 
+    }
+}
+
+	Respuesta ConcurrentModificationException
